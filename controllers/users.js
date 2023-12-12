@@ -1,8 +1,16 @@
 const express = require('express');
+const cors = require('cors');
 const router = express.Router();
 const db = require('./../db/models');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
+
+router.use(cors({
+  origin: 'http://127.0.0.1:5500',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+}));
 
 
 router.post("/register", async (req, res) => {
