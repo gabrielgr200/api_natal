@@ -86,10 +86,10 @@ router.get("/user", async (req, res) => {
 
     try {
       const decodedToken = jwt.verify(token, '8a2b1f8c4e7d5a0c3b6e9d7a2f4c#@$jhladmdfchvvsjhdf97849i363gdb334+!@$');
-      
+
       const user = await db.cadastro.findOne({
         where: { id: decodedToken.userId },
-        attributes: ['id', 'name', 'email'] 
+        attributes: ['id', 'name', 'email']
       });
 
       if (!user) {
@@ -151,6 +151,22 @@ router.delete("/user", async (req, res) => {
     }
     return res.status(500).json({
       mensagem: "Erro ao excluir a conta do usuário"
+    });
+  }
+});
+
+
+router.get("/users", async (req, res) => {
+  try {
+    const users = await db.cadastro.findAll({
+      attributes: ['id', 'name']
+    });
+
+    return res.json({ users });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      mensagem: "Erro ao buscar usuários"
     });
   }
 });

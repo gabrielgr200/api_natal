@@ -9,7 +9,7 @@ api.use('/', users);
 
 
 api.use(cors({
-    origin: 'http://127.0.0.1:5500', // Substitua pelo domínio correto do seu frontend
+    origin: 'http://127.0.0.1:5500', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
 }));
