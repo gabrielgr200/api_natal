@@ -15,6 +15,6 @@ api.use(cors({
 }));
 
 
-api.listen(3440, () => {
+api.listen(process.env.PORT || 3440, () => {
     console.log("teste: http://localhost:3440");
 });
